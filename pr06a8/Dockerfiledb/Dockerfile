@@ -1,0 +1,6 @@
+FROM mariadb
+COPY  ./pr06a6/ /var/lib/mysql
+ENV MYSQL_ROOT_PASSWORD=netlab
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=netlab
+ENV MYSQL_DATABASE=bigdata

@@ -1,0 +1,10 @@
+In diesem Project handelt es sich um Onlie_Resturant Web Applikation.
+Die Infrastruktur,die benutzt wurde,um dieses Service breitzustellen,auf Docker Swarm Modus und Loadbalancing berueht.
+Wir haben 3 Host,die als Manger in diesem Swarm sind.
+Um die Services ueber 3 Hosts verteilt zu werden,wurde ein Docker_Compose File (.yamal) geschrieben,Danach muss ein Stack erstellt werden.weil man die Services durch Stack ueber 3 Hosts verteilen kann.  
+Damit Verfuegbarkeit gewaehrleistet wird,wurde ein LoadBalancer (Nginx) mit Least_Connection Algorithmus konfiguriert.
+Um die Funkunalitaet dieses Algorithmus (Least_conn) zu ueberpruefen,wurde ein Script geschrienen,wodurch unendliche Requests generiert wurden,sodass Nginx die neue Client_Req an die erreichbare Web_Seite senden.
+
+  
+
+

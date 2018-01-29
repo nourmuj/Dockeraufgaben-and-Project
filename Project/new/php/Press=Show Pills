@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Server: nginx/1.13.8
+Date: Sat, 06 Jan 2018 15:55:17 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Length: 1139
+Connection: keep-alive
+X-Powered-By: PHP/7.1.7 ZendServer/9.1.1
+Set-Cookie: ZDEDebuggerPresent=php,phtml,php3; path=/
+Vary: Accept-Encoding
+

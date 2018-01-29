@@ -1,0 +1,40 @@
+version: '2'
+services:
+    web:
+        image: php:7.0-apache
+        volumes:
+            - "./:/var/www/html"
+        ports:
+            - "9611:80"
+        networks:
+        - frontend
+    pinghost:
+        image: debian
+        networks:
+          - frontend
+        links:
+          - web
+        command: ping -d  web
+        #command: /bin/sh -c  "while true; do /bin/echo 'hello'; sleep 5; done; "
+        #command: /bin/sh -c  "while true; do ping web; done"
+    db:
+        image: mariadb
+        networks:
+          - frontend
+        volumes:
+          - ./:/var/lib/mysql
+        environment:
+          MYSQL_ROOT_PASSWORD: netlab
+          MYSQL_USER: root
+          MYSQL_PASSWORD: netlab
+          MYSQL_DATABASE: bigdata  
+networks:
+    frontend:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.16.238.0/24
+                  gateway: 172.16.238.1
+
+

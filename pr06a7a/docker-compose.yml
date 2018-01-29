@@ -1,0 +1,67 @@
+version: '2'
+services:
+#    web1:
+#        image: php-zendserver
+#        volumes:
+#            - "./php/:/var/www/html"
+#        ports:
+#            - "9711:80"
+#        networks:
+#        - frontend
+#    web2:
+#        image: php-zendserver
+#        volumes:
+#           - "./php1/:/var/www/html"
+#        ports:
+#            - "9712:80"
+#        networks:
+#        - frontend
+#    web3:
+#        image: php-zendserver
+#        volumes:
+#            - "./php2/:/var/www/html"
+#        ports:
+#            - "9713:80"
+#        networks:
+#        - frontend
+#    Loadblancer:
+#        image: nginx
+#        networks:
+#          - frontend
+#        links:
+#          - web1
+#          - web2
+#          - web3      
+    db:
+        image: mariadb
+        networks:
+          - frontend
+        ports:
+            - "9714:3306"
+        volumes:
+          - /home/nour/Desktop/servmgmt-pr06/pr06a6/:/var/lib/mysql
+        environment:
+          MYSQL_ROOT_PASSWORD: netlab
+          MYSQL_USER: root
+          MYSQL_PASSWORD: netlab
+          MYSQL_DATABASE: bigdata
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        networks:
+          - frontend
+        ports:
+            - "9715:80"
+        links:
+           - db
+        environment:
+          MYSQL_USERNAME: root
+          MYSQL_ROOT_PASSWORD: netlab
+    
+networks:
+    frontend:
+        driver: bridge
+        ipam:
+            driver: default
+            #config:
+                #- subnet: 172.16.238.0/24
+                  #gateway: 172.16.238.1
